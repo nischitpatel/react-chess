@@ -38,7 +38,7 @@ A fully interactive chess game built with **React**, featuring human vs AI play,
 - **Frontend**: React, JavaScript, CSS  
 - **State Management**: React Hooks (`useState`, `useEffect`)  
 - **Game Logic**: `chessRules.js`  
-- **AI Logic**: `ai.js`, `aiMedium.js`, `aiHard.js`
+- **AI Logic**: `ai.js`, `aiEasy.js`,`aiMedium.js`, `aiHard.js`
 
 ---
 
