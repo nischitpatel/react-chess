@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# React Chess Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A fully interactive chess game built with **React**, featuring human vs AI play, multiple AI difficulty levels, and a responsive user interface. This project is designed for learning React concepts while building a complex and fun application.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Interactive Chessboard**
+  - Drag-and-click style selection and movement
+  - Highlight selected piece and possible moves
+  - Highlight king when in check
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Game Logic**
+  - Legal move enforcement for all pieces (pawn, knight, bishop, rook, queen, king)
+  - Special moves:
+    - Castling
+    - En passant
+    - Pawn promotion
+  - Check, checkmate, and stalemate detection
+  - Move history tracking
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **AI Opponent**
+  - **Easy**: Random moves
+  - **Medium**: Heuristic-based AI considering piece safety
+  - **Hard**: Minimax AI with 2-ply lookahead for strategic play
+  - **Future**: Grandmaster-level AI using a trained model
 
-### `npm test`
+- **User Interface**
+  - Responsive design for desktop and mobile
+  - Side panel for selecting AI difficulty and restarting the game
+  - Real-time turn indicator (Human vs AI)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Frontend**: React, JavaScript, CSS
+- **State Management**: React Hooks (`useState`, `useEffect`)
+- **Game Logic**: Custom chess rules implemented in `chessRules.js`
+- **AI Logic**: Separate modules for easy, medium, and hard AI (`ai.js`, `aiMedium.js`, `aiHard.js`)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting Started
 
-### `npm run eject`
+### Prerequisites
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Node.js (>=14.x)
+- npm or yarn
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+# Clone the repo
+git clone https://github.com/nischitpatel/react-chess.git
+cd react-chess
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Install dependencies
+npm install
+# or
+yarn install
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Start development server
+npm start
+# or
+yarn start
