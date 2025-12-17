@@ -1,24 +1,103 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #121212;
+}
+
+/* ---------- APP LAYOUT ---------- */
+
 .app {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 16px;
+  background-color: #121212;
 }
+
+/* ---------- GAME CONTAINER ---------- */
+
+.game-container {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  max-width: 1000px;
+  width: 100%;
+}
+
+/* ---------- SIDE PANEL ---------- */
+
+.side-panel {
+  width: 220px;
+  background: #1e1e1e;
+  color: white;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.side-panel label {
+  font-size: 14px;
+}
+
+.side-panel select {
+  width: 100%;
+  margin-top: 6px;
+  padding: 6px;
+  border-radius: 6px;
+  border: none;
+}
+
+.side-panel button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.side-panel button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---------- TURN HEADER ---------- */
+
+.side-panel h2 {
+  font-size: 20px;
+  text-align: left;
+}
+
+/* ---------- BOARD WRAPPER ---------- */
 
 .board {
   display: grid;
-  grid-template-columns: repeat(8, 80px);
-  grid-template-rows: repeat(8, 80px);
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr); 
+  width: min(90vmin, 480px);        
+  height: min(90vmin, 480px);        
   border: 2px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
+/* ---------- SQUARE ---------- */
+
 .square {
-  width: 80px;
-  height: 80px;
+  width: 100%;
+  height: 100%;
   display: flex;
-  align-items: center;      
+  align-items: center;
   justify-content: center;
+
+  box-sizing: border-box;
+  flex-shrink: 0;
 }
+
+/* ---------- COLORS ---------- */
 
 .light {
   background-color: #f0d9b5;
@@ -28,32 +107,66 @@
   background-color: #b58863;
 }
 
+/* ---------- PIECE ---------- */
+
 .piece {
-  font-size: 48px;
-  cursor: default;
+  font-size: clamp(28px, 5vmin, 48px);
+  line-height: 1;        /* height explansion prevention */
+  pointer-events: none;
   user-select: none;
 }
 
-/* .selected {
-  outline: 3px solid #92b89d;
-  outline-offset: -3px;
-} */
+/* ---------- STATES ---------- */
 
 .selected {
-  box-shadow: inset 0 0 0 3px #70706f; /* yellow highlight for selected piece */
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
+  box-shadow: inset 0 0 0 3px #70706f;
 }
 
 .possible {
-  box-shadow: inset 0 0 0 3px rgba(58, 203, 58, 0.7);
-  background-color: none;
+  box-shadow: inset 0 0 0 3px rgba(58, 203, 58, 0.6);
 }
 
 .kingCheck {
   box-shadow: inset 0 0 0 3px rgba(224, 0, 0, 0.7);
-  background-color: none;
 }
+
+/* ---------- MOBILE RESPONSIVE ---------- */
+
+@media (max-width: 768px) {
+  .game-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .side-panel {
+    width: 100%;
+    max-width: 480px;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  .board {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .game-container {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .side-panel {
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .board {
+    width: 480px;
+  }
+}
+
