@@ -1,18 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { getSafeMoves, getPieceColor, isKingInCheck, getAllMovesForColor } from "../utils/chessRules";
+import { getSafeMoves, getPieceColor, isKingInCheck } from "../utils/chessRules";
 import Square from "./Square";
 import { getAIMove } from "../utils/ai";
-
-const initialBoard = [
-  ["r", "n", "b", "q", "k", "b", "n", "r"],
-  ["p", "p", "p", "p", "p", "p", "p", "p"],
-  Array(8).fill(null),
-  Array(8).fill(null),
-  Array(8).fill(null),
-  Array(8).fill(null),
-  ["P", "P", "P", "P", "P", "P", "P", "P"],
-  ["R", "N", "B", "Q", "K", "B", "N", "R"],
-];
+import { initialBoard } from "../utils/chessRules";
+import CustomDropdown from "./CustomDropdown";
 
 export default function ChessBoard() {
   const [board, setBoard] = useState(initialBoard);
@@ -160,11 +151,11 @@ export default function ChessBoard() {
       <div className="side-panel">
         <div style={{ marginBottom: 12 }}>
           <label>Game Mode: </label>
-          <select value={aiLevel} onChange={e => setAiLevel(e.target.value)}>
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-          </select>
+          <CustomDropdown
+            options={["easy", "medium", "hard"]}
+            selected={aiLevel}                // current selected value
+            onChange={(value) => setAiLevel(value)}  // update state when changed
+          />
         </div>
 
         <button

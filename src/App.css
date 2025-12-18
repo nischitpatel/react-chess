@@ -1,11 +1,10 @@
-html, body {
+/* html, body {
   margin: 0;
   padding: 0;
   height: 100%;
   background-color: #121212;
 }
 
-/* ---------- APP LAYOUT ---------- */
 
 .app {
   display: flex;
@@ -16,7 +15,6 @@ html, body {
   background-color: #121212;
 }
 
-/* ---------- GAME CONTAINER ---------- */
 
 .game-container {
   display: flex;
@@ -24,9 +22,9 @@ html, body {
   align-items: flex-start;
   max-width: 1000px;
   width: 100%;
+  z-index: 1;
 }
 
-/* ---------- SIDE PANEL ---------- */
 
 .side-panel {
   width: 220px;
@@ -64,14 +62,12 @@ html, body {
   cursor: not-allowed;
 }
 
-/* ---------- TURN HEADER ---------- */
 
 .side-panel h2 {
   font-size: 20px;
   text-align: left;
 }
 
-/* ---------- BOARD WRAPPER ---------- */
 
 .board {
   display: grid;
@@ -84,7 +80,6 @@ html, body {
   overflow: hidden;
 }
 
-/* ---------- SQUARE ---------- */
 
 .square {
   width: 100%;
@@ -97,7 +92,6 @@ html, body {
   flex-shrink: 0;
 }
 
-/* ---------- COLORS ---------- */
 
 .light {
   background-color: #f0d9b5;
@@ -107,16 +101,14 @@ html, body {
   background-color: #b58863;
 }
 
-/* ---------- PIECE ---------- */
 
 .piece {
   font-size: clamp(28px, 5vmin, 48px);
-  line-height: 1;        /* height explansion prevention */
+  line-height: 1;        
   pointer-events: none;
   user-select: none;
 }
 
-/* ---------- STATES ---------- */
 
 .selected {
   box-shadow: inset 0 0 0 3px #70706f;
@@ -130,7 +122,6 @@ html, body {
   box-shadow: inset 0 0 0 3px rgba(224, 0, 0, 0.7);
 }
 
-/* ---------- MOBILE RESPONSIVE ---------- */
 
 @media (max-width: 768px) {
   .game-container {
@@ -169,4 +160,167 @@ html, body {
     width: 480px;
   }
 }
+ */
 
+
+ /* ---------- GLOBAL ---------- */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #121212; /* fallback */
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
+
+/* ---------- APP LAYOUT ---------- */
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 16px;
+  position: relative;
+}
+
+/* ---------- GAME CONTAINER ---------- */
+.game-container {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  max-width: 1000px;
+  width: 100%;
+  position: relative;
+  z-index: 1; /* above Galaxy background */
+}
+
+/* ---------- SIDE PANEL ---------- */
+.side-panel {
+  width: 220px;
+  background: rgba(255, 255, 255, 0.05); /* semi-transparent glass */
+  color: white;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.18);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.side-panel h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* ---------- FORM ELEMENTS ---------- */
+.side-panel label {
+  font-size: 18px;
+}
+
+.side-panel select {
+  width: 100%;
+  margin-top: 6px;
+  padding: 6px;
+  border-radius: 6px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+.side-panel button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.side-panel button:hover:not(:disabled) {
+  background: rgba(255,255,255,0.2);
+}
+
+.side-panel button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---------- CHESS BOARD ---------- */
+.board {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr); 
+  width: min(90vmin, 480px);
+  height: min(90vmin, 480px);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+/* ---------- SQUARES ---------- */
+.square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.light {
+  background-color: rgba(240, 217, 181, 0.8);
+}
+
+.dark {
+  background-color: rgba(181, 136, 99, 0.8);
+}
+
+/* ---------- PIECES ---------- */
+.piece {
+  font-size: clamp(28px, 5vmin, 48px);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ---------- STATES ---------- */
+.selected {
+  box-shadow: inset 0 0 0 3px #70706f;
+}
+
+.possible {
+  box-shadow: inset 0 0 0 3px rgba(58, 203, 58, 0.6);
+}
+
+.kingCheck {
+  box-shadow: inset 0 0 0 3px rgba(224, 0, 0, 0.7);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .game-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .side-panel {
+    width: 100%;
+    max-width: 480px;
+  }
+
+  .board {
+    width: 100%;
+    height: auto;
+  }
+}
