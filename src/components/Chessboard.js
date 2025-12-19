@@ -103,18 +103,27 @@ export default function ChessBoard() {
     if (!aiLevel) return;
     if (turn !== AI_COLOR) return;
 
-    const aiMove = getAIMove(board, AI_COLOR, history, aiLevel);
-    if (!aiMove) return;
-
-    setTimeout(() => {
-      makeMove(
-        aiMove.fromRow,
-        aiMove.fromCol,
-        aiMove.toRow,
-        aiMove.toCol
-      );
-    }, 500);
-  }, [turn, board, aiLevel]);
+    const makeAIMove = async () => {
+      try {
+        // Await the AI move (works for sync and async)
+        const aiMove = await getAIMove(board, AI_COLOR, history, aiLevel);
+        if (!aiMove) return;
+  
+        setTimeout(() => {
+          makeMove(
+            aiMove.fromRow,
+            aiMove.fromCol,
+            aiMove.toRow,
+            aiMove.toCol
+          );
+        }, 500);
+      } catch (err) {
+        console.error("Error getting AI move:", err);
+      }
+    };
+  
+    makeAIMove();
+  }, [turn, board, aiLevel, history]);
 
   const handleClick = (row, col) => {
     const piece = board[row][col];
@@ -150,9 +159,9 @@ export default function ChessBoard() {
     <div className="game-container">
       <div className="side-panel">
         <div style={{ marginBottom: 12 }}>
-          <label>Game Mode: </label>
+          <label>Play against: </label>
           <CustomDropdown
-            options={["easy", "medium", "hard"]}
+            options={["easy", "medium", "hard", "grand-master"]}
             selected={aiLevel}                // current selected value
             onChange={(value) => setAiLevel(value)}  // update state when changed
           />
