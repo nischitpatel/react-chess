@@ -2,6 +2,7 @@
 
 A fully interactive chess game built with **React**, featuring human vs AI play, multiple AI difficulty levels, and a responsive user interface. The main goal of this project is to learn **React concepts** while building a complex and fun application.
 
+** Play with me: https://react-chess-wco1.vercel.app/ **
 ---
 
 ## ✨ Features
