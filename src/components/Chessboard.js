@@ -77,7 +77,11 @@ export default function ChessBoard() {
 
       if (opponentMoves.length === 0) {
         setTimeout(() => {
-          alert(`${turn} wins by checkmate!`);
+          const message = turn === "white"
+          ? "You won by checkmate!"
+          : "Nischit won by checkmate!";
+          // alert(`${turn} wins by checkmate!`);
+          alert(message);
           resetGame();
         }, 100);
         return;
@@ -159,7 +163,7 @@ export default function ChessBoard() {
     <div className="game-container">
       <div className="side-panel">
         <div style={{ marginBottom: 12 }}>
-          <label>Play against: </label>
+          <label>Select Nischit's level: </label>
           <CustomDropdown
             options={["easy", "medium", "hard", "grand-master"]}
             selected={aiLevel}                // current selected value
@@ -180,7 +184,7 @@ export default function ChessBoard() {
         >
           Restart Game
         </button>
-        <h2>{turn === "white" ? "Your turn" : "Bot's turn"}</h2>
+        <h2>{turn === "white" ? "Your turn" : "Nischit is thinking..."}</h2>
       </div>
 
       <div className="board">

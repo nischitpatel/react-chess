@@ -176,11 +176,21 @@ html, body {
 /* ---------- APP LAYOUT ---------- */
 .app {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   padding: 16px;
   position: relative;
+}
+
+.chess-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-align: center;
+  color: white;
+  z-index: 10;
 }
 
 /* ---------- GAME CONTAINER ---------- */
