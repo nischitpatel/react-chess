@@ -1,4 +1,4 @@
-const AI_API_URL = "https://chess-ai-production-1899.up.railway.app/predict-move";
+const AI_API_URL = "https://chess-ai-opf2.onrender.com/predict-move";
 
 export async function getGmMove(board, turn = "black", history = []) {
   // Build request payload
